@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Money /> returns default format money 1`] = `
+<div>
+  <span>
+    US$1.00
+  </span>
+</div>
+`;
+
+exports[`<Money /> returns formatted money 1`] = `
+<div>
+  <span>
+    1,00 $CA
+  </span>
+</div>
+`;
