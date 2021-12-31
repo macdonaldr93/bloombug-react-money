@@ -32,7 +32,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "react-money",
+  "name": "@bloombug/react-money",
   "author": "Ryan Macdonald",
   "module": "dist/react-money.esm.js",
   "size-limit": [
