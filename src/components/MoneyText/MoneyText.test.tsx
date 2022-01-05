@@ -3,10 +3,10 @@ import * as ReactDOM from 'react-dom';
 import { CAD, Mint } from '@bloombug/money';
 import currencies from '@bloombug/money/iso-currencies.json';
 
-import { MintProvider } from '../context';
-import { Money } from './Money';
+import { MintProvider } from '../../context';
+import { MoneyText } from './MoneyText';
 
-describe('<Money />', () => {
+describe('<MoneyText />', () => {
   let div: HTMLDivElement;
 
   beforeEach(() => {
@@ -18,7 +18,7 @@ describe('<Money />', () => {
   });
 
   it('returns default format money', () => {
-    ReactDOM.render(<Money fractional={100} />, div);
+    ReactDOM.render(<MoneyText fractional={100} />, div);
 
     expect(div).toMatchSnapshot();
   });
@@ -28,7 +28,7 @@ describe('<Money />', () => {
 
     ReactDOM.render(
       <MintProvider mint={mint}>
-        <Money fractional={100} currency={CAD} locale="fr-FR" />
+        <MoneyText fractional={100} currency={CAD} locale="fr-FR" />
       </MintProvider>,
       div
     );

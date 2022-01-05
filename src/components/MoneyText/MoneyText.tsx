@@ -1,9 +1,9 @@
 import React, { CSSProperties, FC, useMemo } from 'react';
 import { CurrencyCode } from '@bloombug/money';
 
-import { useMoney } from '../hooks';
+import { useMoney } from '../../hooks';
 
-export interface Props
+export interface MoneyTextProps
   extends Omit<Partial<Intl.NumberFormatOptions>, 'style' | 'currency'> {
   className?: string;
   currency?: CurrencyCode | null;
@@ -12,7 +12,7 @@ export interface Props
   style?: CSSProperties;
 }
 
-export const Money: FC<Props> = ({
+export const MoneyText: FC<MoneyTextProps> = ({
   locale,
   fractional,
   currency,

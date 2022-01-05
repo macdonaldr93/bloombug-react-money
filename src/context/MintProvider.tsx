@@ -3,12 +3,12 @@ import { Mint } from '@bloombug/money';
 
 import { MintContext } from './MintContext';
 
-export interface Props {
+export interface MintProviderProps {
   children: ReactChild;
   mint: Mint;
 }
 
-export const MintProvider: FC<Props> = ({ children, mint }) => {
+export const MintProvider: FC<MintProviderProps> = ({ children, mint }) => {
   return (
     <MintContext.Provider value={{ mint }}>{children}</MintContext.Provider>
   );

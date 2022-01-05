@@ -1,2 +1,2 @@
-export { IMintContext } from './MintContext';
-export { MintProvider } from './MintProvider';
+export { IMintContext, MintContext } from './MintContext';
+export { MintProvider, MintProviderProps } from './MintProvider';
