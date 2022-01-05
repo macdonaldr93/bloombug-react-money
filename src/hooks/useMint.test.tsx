@@ -35,6 +35,6 @@ describe('useMint()', () => {
       div
     );
 
-    expect(renderedMint!.defaultCurrency.isoCode).toEqual(CAD);
+    expect(renderedMint!.defaultCurrency).toEqualCurrency(mint.Currency(CAD));
   });
 });

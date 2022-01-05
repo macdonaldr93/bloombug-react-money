@@ -35,7 +35,7 @@ describe('useMoney()', () => {
       div
     );
 
-    expect(rendered!(100).equals(mint.Money(100))).toBeTruthy();
+    expect(rendered!(100)).toEqualMoney(mint.Money(100));
   });
 
   it('returns expected format', () => {

@@ -35,6 +35,6 @@ describe('useCurrency()', () => {
       div
     );
 
-    expect(rendered!(CAD).equals(mint.Currency(CAD))).toBeTruthy();
+    expect(rendered!(CAD)).toEqualCurrency(mint.Currency(CAD));
   });
 });
