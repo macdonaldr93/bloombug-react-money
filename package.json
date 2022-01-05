@@ -1,5 +1,5 @@
 {
-  "version": "1.1.5",
+  "version": "2.0.0",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -46,7 +46,9 @@
     }
   ],
   "jest": {
-    "setupFilesAfterEnv": ["./src/test/setup.ts"]
+    "setupFilesAfterEnv": [
+      "./src/test/setup.ts"
+    ]
   },
   "devDependencies": {
     "@babel/core": "7.16.5",
