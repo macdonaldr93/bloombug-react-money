@@ -1111,12 +1111,13 @@
   resolved "https://registry.yarnpkg.com/@bloombug/jest-money/-/jest-money-1.3.0.tgz#70d60fd11f8d701b9e894d732321e9cbb654ff0b"
   integrity sha512-T16k+RVCmAG1UpEI/i8P5ZUnOubMC2qwfYIKPu51yTBAMn1nQLZyLvLjzhDYwrCrmoB2Z3Pk+NK7QGfdqHCQXw==
 
-"@bloombug/money@^1.1.5":
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/@bloombug/money/-/money-1.1.5.tgz#ab7124b2f93a67208d57c2c2b1e2c067e1c6f3af"
-  integrity sha512-wT2jUh97aqEVExnFjjNrvYzpg4HlOdNcbl2US/YXxLTHqeNUgMzF1PWtz7a2UZD6klwf5uXeIvMu09sDdoYXew==
+"@bloombug/money@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@bloombug/money/-/money-1.2.2.tgz#cd0ef5e551e38b9f88cbe1f09e4d3b59e9b687cb"
+  integrity sha512-tNloTsf0gdUnQ6MtE4dPhOsSAehsGuKjfanq7hia3xQXpa97VQgMa9B6pcEsH/aqAlJKcGOs4ii5bxz4C2pkdg==
   dependencies:
-    bigdecimal.js "^1.1.0"
+    bigdecimal.js "^1.1.1"
+    lodash.memoize "^4.1.2"
 
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
@@ -2048,10 +2049,10 @@ big.js@^5.2.2:
   resolved "https://registry.yarnpkg.com/big.js/-/big.js-5.2.2.tgz#65f0af382f578bcdc742bd9c281e9cb2d7768328"
   integrity sha512-vyL2OymJxmarO8gxMr0mhChsO9QGwhynfuu4+MHTAW6czfq9humCB7rKpUjDd9YUiDPU4mzpyupFSvOClAwbmQ==
 
-bigdecimal.js@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/bigdecimal.js/-/bigdecimal.js-1.1.0.tgz#e09392b8881f3d290a6dd348a1ad05fbc4144edf"
-  integrity sha512-oQyDk72s4qcXUDO2zA6K/Tjo0x/Fwtlfk87UAfdY5/j0+oDCn4g72q2w/L9+fMoTxCjskR99CZJJA4dUrSop5Q==
+bigdecimal.js@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/bigdecimal.js/-/bigdecimal.js-1.1.1.tgz#90ec807dbc464ae0e9f278e97bfc48fcb600e2c3"
+  integrity sha512-BaiV8fITgaOdEcyRT35eFA1KFPq2buy2mO+l0kFdizNbyyHrEY8cnYg3ngX4ofjNP+Z9HDf3XaFLSJWaBcM8ZQ==
 
 binary-extensions@^2.0.0:
   version "2.2.0"
@@ -4659,7 +4660,7 @@ lodash.debounce@^4.0.8:
   resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
   integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
 
-lodash.memoize@4.x:
+lodash.memoize@4.x, lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
   integrity sha1-vMbEmkKihA7Zl/Mj6tpezRguC/4=
