@@ -3,7 +3,7 @@
 exports[`<MoneyText /> returns default format money 1`] = `
 <div>
   <span>
-    US$1.00
+    $1.00
   </span>
 </div>
 `;

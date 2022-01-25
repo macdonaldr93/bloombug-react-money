@@ -1,9 +1,9 @@
 import React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Mint, CAD } from '@bloombug/money';
+import { Mint, CAD, USD } from '@bloombug/money';
 import currencies from '@bloombug/money/iso-currencies.json';
 
-import { useMoney } from './useMoney';
+import { isCurrencyOptions, isLocalesOptions, useMoney } from './useMoney';
 import { MintProvider } from '../context';
 
 describe('useMoney()', () => {
@@ -38,24 +38,159 @@ describe('useMoney()', () => {
     expect(rendered!(100)).toEqualMoney(mint.Money(100));
   });
 
-  it('returns expected format', () => {
-    const mint = new Mint({ currencies, defaultCurrency: CAD });
-    let rendered: any;
+  describe('formatMoney()', () => {
+    it('returns expected format with fractional', () => {
+      const mint = new Mint({ currencies, defaultCurrency: CAD });
+      let rendered: any;
 
-    const TestComponent = () => {
-      const { formatMoney } = useMoney();
-      rendered = formatMoney('fr-FR', 100);
+      const TestComponent = () => {
+        const { formatMoney } = useMoney();
+        rendered = formatMoney(100);
 
-      return <div />;
-    };
+        return <div />;
+      };
 
-    ReactDOM.render(
-      <MintProvider mint={mint}>
-        <TestComponent />
-      </MintProvider>,
-      div
-    );
+      ReactDOM.render(
+        <MintProvider mint={mint}>
+          <TestComponent />
+        </MintProvider>,
+        div
+      );
 
-    expect(rendered).toEqual('1,00 $CA');
+      expect(rendered).toEqual('CA$1.00');
+    });
+
+    it('returns expected format with fractional and options', () => {
+      const mint = new Mint({ currencies, defaultCurrency: CAD });
+      let rendered: any;
+
+      const TestComponent = () => {
+        const { formatMoney } = useMoney();
+        rendered = formatMoney(100, { notation: 'scientific' });
+
+        return <div />;
+      };
+
+      ReactDOM.render(
+        <MintProvider mint={mint}>
+          <TestComponent />
+        </MintProvider>,
+        div
+      );
+
+      expect(rendered).toEqual('CA$1.00E0');
+    });
+
+    it('returns expected format with fractional and currency', () => {
+      const mint = new Mint({ currencies, defaultCurrency: CAD });
+      let rendered: any;
+
+      const TestComponent = () => {
+        const { formatMoney } = useMoney();
+        rendered = formatMoney(100, USD);
+
+        return <div />;
+      };
+
+      ReactDOM.render(
+        <MintProvider mint={mint}>
+          <TestComponent />
+        </MintProvider>,
+        div
+      );
+
+      expect(rendered).toEqual('$1.00');
+    });
+
+    it('returns expected format with fractional, currency and options', () => {
+      const mint = new Mint({ currencies, defaultCurrency: CAD });
+      let rendered: any;
+
+      const TestComponent = () => {
+        const { formatMoney } = useMoney();
+        rendered = formatMoney(100, USD, { notation: 'scientific' });
+
+        return <div />;
+      };
+
+      ReactDOM.render(
+        <MintProvider mint={mint}>
+          <TestComponent />
+        </MintProvider>,
+        div
+      );
+
+      expect(rendered).toEqual('$1.00E0');
+    });
+
+    it('returns expected format with fractional, currency and locales', () => {
+      const mint = new Mint({ currencies, defaultCurrency: CAD });
+      let rendered: any;
+
+      const TestComponent = () => {
+        const { formatMoney } = useMoney();
+        rendered = formatMoney(100, USD, 'en-CA');
+
+        return <div />;
+      };
+
+      ReactDOM.render(
+        <MintProvider mint={mint}>
+          <TestComponent />
+        </MintProvider>,
+        div
+      );
+
+      expect(rendered).toEqual('US$1.00');
+    });
+
+    it('returns expected format with fractional, currency, locales and options', () => {
+      const mint = new Mint({ currencies, defaultCurrency: CAD });
+      let rendered: any;
+
+      const TestComponent = () => {
+        const { formatMoney } = useMoney();
+        rendered = formatMoney(100, USD, 'en-CA', { notation: 'scientific' });
+
+        return <div />;
+      };
+
+      ReactDOM.render(
+        <MintProvider mint={mint}>
+          <TestComponent />
+        </MintProvider>,
+        div
+      );
+
+      expect(rendered).toEqual('US$1.00e0');
+    });
+  });
+
+  describe('isCurrencyOptions()', () => {
+    it('returns false for string', () => {
+      expect(isCurrencyOptions('')).toBeFalsy();
+    });
+
+    it('returns false for null', () => {
+      expect(isCurrencyOptions(null)).toBeFalsy();
+    });
+
+    it('returns true for object', () => {
+      expect(isCurrencyOptions({})).toBeTruthy();
+    });
+  });
+
+  describe('isLocalesOptions()', () => {
+    it('returns false for string', () => {
+      expect(isLocalesOptions('')).toBeFalsy();
+    });
+
+    it('returns false for null', () => {
+      expect(isLocalesOptions([''])).toBeFalsy();
+    });
+
+    it('returns true for object', () => {
+      expect(isLocalesOptions({})).toBeTruthy();
+    });
   });
 });
