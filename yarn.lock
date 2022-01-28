@@ -1111,10 +1111,10 @@
   resolved "https://registry.yarnpkg.com/@bloombug/jest-money/-/jest-money-1.3.0.tgz#70d60fd11f8d701b9e894d732321e9cbb654ff0b"
   integrity sha512-T16k+RVCmAG1UpEI/i8P5ZUnOubMC2qwfYIKPu51yTBAMn1nQLZyLvLjzhDYwrCrmoB2Z3Pk+NK7QGfdqHCQXw==
 
-"@bloombug/money@^1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@bloombug/money/-/money-1.2.2.tgz#cd0ef5e551e38b9f88cbe1f09e4d3b59e9b687cb"
-  integrity sha512-tNloTsf0gdUnQ6MtE4dPhOsSAehsGuKjfanq7hia3xQXpa97VQgMa9B6pcEsH/aqAlJKcGOs4ii5bxz4C2pkdg==
+"@bloombug/money@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@bloombug/money/-/money-1.3.0.tgz#6f49137899325126f44ff0380d08b24adaacc407"
+  integrity sha512-sABpwDRQFrKZa1y8jBhvA+eQXolxfxdab0HBiDUDgBntM+7V1ida/VKorr9BNv1vLeXUOQMOUtXUQGFwusm9EQ==
   dependencies:
     bigdecimal.js "^1.1.1"
     lodash.memoize "^4.1.2"

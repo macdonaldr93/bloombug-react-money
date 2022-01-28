@@ -68,6 +68,6 @@
     "typescript": "^4.5.4"
   },
   "dependencies": {
-    "@bloombug/money": "^1.2.2"
+    "@bloombug/money": "^1.3.0"
   }
 }
