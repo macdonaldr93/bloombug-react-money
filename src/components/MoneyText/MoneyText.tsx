@@ -1,19 +1,18 @@
 import React, { CSSProperties, FC, useMemo } from 'react';
-import { CurrencyCode } from '@bloombug/money';
+import { CurrencyCode, CurrencyFormatOptions } from '@bloombug/money';
 
 import { useMoney } from '../../hooks';
 
-export interface MoneyTextProps
-  extends Omit<Partial<Intl.NumberFormatOptions>, 'style' | 'currency'> {
+export interface MoneyTextProps extends CurrencyFormatOptions {
   className?: string;
   currency?: CurrencyCode | null;
   fractional?: bigint | number | string;
-  locale?: string | string[];
+  locales?: string | string[];
   style?: CSSProperties;
 }
 
 export const MoneyText: FC<MoneyTextProps> = ({
-  locale,
+  locales,
   fractional,
   currency,
   className,
@@ -22,10 +21,13 @@ export const MoneyText: FC<MoneyTextProps> = ({
 }) => {
   const { Money } = useMoney();
 
-  const formattedMoney = useMemo(
-    () => Money(fractional, currency).format(locale, formatOptions),
-    [Money, fractional, currency, locale, formatOptions]
-  );
+  const formattedMoney = useMemo(() => {
+    if (locales) {
+      return Money(fractional, currency).format(locales, formatOptions);
+    }
+
+    return Money(fractional, currency).format(formatOptions);
+  }, [Money, fractional, currency, locales, formatOptions]);
 
   return (
     <span className={className} style={style}>

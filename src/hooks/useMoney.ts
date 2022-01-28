@@ -1,28 +1,24 @@
 import { useCallback } from 'react';
+import { CurrencyFormatOptions } from '@bloombug/money';
 
 import { useMint } from './useMint';
-
-export type NumberFormatOptions = Omit<
-  Intl.NumberFormatOptions,
-  'style' | 'currency'
->;
 
 export type FormatMoney = {
   (fractional?: string | number | bigint | undefined): string;
   (
     fractional?: string | number | bigint | undefined,
-    options?: NumberFormatOptions
+    options?: CurrencyFormatOptions
   ): string;
   (
     fractional?: string | number | bigint | undefined,
     currency?: string | null | undefined,
-    options?: NumberFormatOptions
+    options?: CurrencyFormatOptions
   ): string;
   (
     fractional?: string | number | bigint | undefined,
     currency?: string | null | undefined,
     locales?: string | string[],
-    options?: NumberFormatOptions
+    options?: CurrencyFormatOptions
   ): string;
 };
 
@@ -33,10 +29,10 @@ export const useMoney = () => {
   const formatMoney: FormatMoney = useCallback(
     (
       fractional?: string | number | bigint | undefined,
-      currency: string | null | undefined | NumberFormatOptions = mint
+      currency: string | null | undefined | CurrencyFormatOptions = mint
         .defaultCurrency.isoCode,
-      locales: string | string[] | NumberFormatOptions = mint.defaultLocale,
-      options: NumberFormatOptions = {}
+      locales: string | string[] | CurrencyFormatOptions = mint.defaultLocale,
+      options: CurrencyFormatOptions = {}
     ) => {
       if (typeof currency === 'undefined') {
         return Money(fractional).format();
@@ -59,13 +55,13 @@ export const useMoney = () => {
 };
 
 export function isCurrencyOptions(
-  currency: string | null | NumberFormatOptions
-): currency is NumberFormatOptions {
+  currency: string | null | CurrencyFormatOptions
+): currency is CurrencyFormatOptions {
   return typeof currency !== 'string' && currency !== null;
 }
 
 export function isLocalesOptions(
-  locales: string | string[] | undefined | NumberFormatOptions
-): locales is NumberFormatOptions {
+  locales: string | string[] | undefined | CurrencyFormatOptions
+): locales is CurrencyFormatOptions {
   return typeof locales !== 'string' && !Array.isArray(locales);
 }

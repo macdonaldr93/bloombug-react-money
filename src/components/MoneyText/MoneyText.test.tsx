@@ -28,7 +28,20 @@ describe('<MoneyText />', () => {
 
     ReactDOM.render(
       <MintProvider mint={mint}>
-        <MoneyText fractional={100} currency={CAD} locale="fr-FR" />
+        <MoneyText fractional={100} currency={CAD} locales="fr-FR" />
+      </MintProvider>,
+      div
+    );
+
+    expect(div).toMatchSnapshot();
+  });
+
+  it('returns formatted money with default currency', () => {
+    const mint = new Mint({ currencies, defaultLocale: 'en-CA' });
+
+    ReactDOM.render(
+      <MintProvider mint={mint}>
+        <MoneyText fractional={100} currency={CAD} />
       </MintProvider>,
       div
     );

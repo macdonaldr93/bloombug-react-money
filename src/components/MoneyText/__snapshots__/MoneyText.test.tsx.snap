@@ -15,3 +15,11 @@ exports[`<MoneyText /> returns formatted money 1`] = `
   </span>
 </div>
 `;
+
+exports[`<MoneyText /> returns formatted money with default currency 1`] = `
+<div>
+  <span>
+    $1.00
+  </span>
+</div>
+`;
