@@ -1,12 +1,18 @@
 import React, { CSSProperties, FC, useMemo } from 'react';
-import { CurrencyCode, CurrencyFormatOptions } from '@bloombug/money';
+import {
+  CurrencyCode,
+  CurrencyFormatOptions,
+  FractionalInputType,
+  Money,
+  isMoney,
+} from '@bloombug/money';
 
 import { useMoney } from '../../hooks';
 
 export interface MoneyTextProps extends CurrencyFormatOptions {
   className?: string;
   currency?: CurrencyCode | null;
-  fractional?: bigint | number | string;
+  fractional?: Money | FractionalInputType;
   locales?: string | string[];
   style?: CSSProperties;
 }
@@ -22,11 +28,21 @@ export const MoneyText: FC<MoneyTextProps> = ({
   const { Money } = useMoney();
 
   const formattedMoney = useMemo(() => {
-    if (locales) {
-      return Money(fractional, currency).format(locales, formatOptions);
-    }
+    if (isMoney(fractional)) {
+      if (locales) {
+        return fractional.format(locales, formatOptions);
+      }
 
-    return Money(fractional, currency).format(formatOptions);
+      return fractional.format(formatOptions);
+    } else {
+      const fractionalMoney = Money(fractional, currency);
+
+      if (locales) {
+        return fractionalMoney.format(locales, formatOptions);
+      }
+
+      return fractionalMoney.format(formatOptions);
+    }
   }, [Money, fractional, currency, locales, formatOptions]);
 
   return (

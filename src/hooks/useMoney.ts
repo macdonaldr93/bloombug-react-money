@@ -1,21 +1,21 @@
 import { useCallback } from 'react';
-import { CurrencyFormatOptions } from '@bloombug/money';
+import { CurrencyFormatOptions, FractionalInputType } from '@bloombug/money';
 
 import { useMint } from './useMint';
 
 export type FormatMoney = {
-  (fractional?: string | number | bigint | undefined): string;
+  (fractional?: FractionalInputType | undefined): string;
   (
-    fractional?: string | number | bigint | undefined,
+    fractional?: FractionalInputType | undefined,
     options?: CurrencyFormatOptions
   ): string;
   (
-    fractional?: string | number | bigint | undefined,
+    fractional?: FractionalInputType | undefined,
     currency?: string | null | undefined,
     options?: CurrencyFormatOptions
   ): string;
   (
-    fractional?: string | number | bigint | undefined,
+    fractional?: FractionalInputType | undefined,
     currency?: string | null | undefined,
     locales?: string | string[],
     options?: CurrencyFormatOptions
@@ -28,7 +28,7 @@ export const useMoney = () => {
 
   const formatMoney: FormatMoney = useCallback(
     (
-      fractional?: string | number | bigint | undefined,
+      fractional?: FractionalInputType | undefined,
       currency: string | null | undefined | CurrencyFormatOptions = mint
         .defaultCurrency.isoCode,
       locales: string | string[] | CurrencyFormatOptions = mint.defaultLocale,

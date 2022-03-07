@@ -48,4 +48,17 @@ describe('<MoneyText />', () => {
 
     expect(div).toMatchSnapshot();
   });
+
+  it('returns formatted money with money type', () => {
+    const mint = new Mint({ currencies, defaultLocale: 'en-CA' });
+
+    ReactDOM.render(
+      <MintProvider mint={mint}>
+        <MoneyText fractional={mint.Money(100, CAD)} />
+      </MintProvider>,
+      div
+    );
+
+    expect(div).toMatchSnapshot();
+  });
 });
