@@ -9,7 +9,7 @@ import {
 
 import { useMoney } from '../../hooks';
 
-export interface MoneyTextProps extends CurrencyFormatOptions {
+export interface MoneyTextProps extends Omit<CurrencyFormatOptions, 'style'> {
   className?: string;
   currency?: CurrencyCode | null;
   fractional?: Money | FractionalInputType;

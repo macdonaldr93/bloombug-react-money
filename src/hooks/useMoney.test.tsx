@@ -162,7 +162,7 @@ describe('useMoney()', () => {
         div
       );
 
-      expect(rendered).toEqual('US$1.00e0');
+      expect(rendered).toEqual('US$1.00E0');
     });
   });
 
