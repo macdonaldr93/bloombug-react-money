@@ -1,7 +1,6 @@
 import React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Mint, CAD } from '@bloombug/money';
-import currencies from '@bloombug/money/iso-currencies.json';
+import { Mint, CAD, currencies } from '@bloombug/money';
 
 import { useMint } from './useMint';
 import { MintProvider } from '../context';
@@ -35,6 +34,6 @@ describe('useMint()', () => {
       div
     );
 
-    expect(renderedMint!.defaultCurrency).toEqualCurrency(mint.Currency(CAD));
+    expect(renderedMint!.defaultCurrency).toEqualCurrency(CAD);
   });
 });

@@ -1,22 +1,19 @@
 import { useCallback } from 'react';
-import { CurrencyFormatOptions, FractionalInputType } from '@bloombug/money';
+import { CurrencyFormatOptions, Amount, Currency } from '@bloombug/money';
 
 import { useMint } from './useMint';
 
 export type FormatMoney = {
-  (fractional?: FractionalInputType | undefined): string;
+  (fractional?: Amount | undefined): string;
+  (fractional?: Amount | undefined, options?: CurrencyFormatOptions): string;
   (
-    fractional?: FractionalInputType | undefined,
+    fractional?: Amount | undefined,
+    currency?: Currency | string | null | undefined,
     options?: CurrencyFormatOptions
   ): string;
   (
-    fractional?: FractionalInputType | undefined,
-    currency?: string | null | undefined,
-    options?: CurrencyFormatOptions
-  ): string;
-  (
-    fractional?: FractionalInputType | undefined,
-    currency?: string | null | undefined,
+    fractional?: Amount | undefined,
+    currency?: Currency | string | null | undefined,
     locales?: string | string[],
     options?: CurrencyFormatOptions
   ): string;
@@ -28,9 +25,13 @@ export const useMoney = () => {
 
   const formatMoney: FormatMoney = useCallback(
     (
-      fractional?: FractionalInputType | undefined,
-      currency: string | null | undefined | CurrencyFormatOptions = mint
-        .defaultCurrency.isoCode,
+      fractional?: Amount | undefined,
+      currency:
+        | string
+        | Currency
+        | null
+        | undefined
+        | CurrencyFormatOptions = mint.defaultCurrency,
       locales: string | string[] | CurrencyFormatOptions = mint.defaultLocale,
       options: CurrencyFormatOptions = {}
     ) => {
@@ -55,9 +56,13 @@ export const useMoney = () => {
 };
 
 export function isCurrencyOptions(
-  currency: string | null | CurrencyFormatOptions
+  currency: string | null | Currency | CurrencyFormatOptions
 ): currency is CurrencyFormatOptions {
-  return typeof currency !== 'string' && currency !== null;
+  return (
+    typeof currency !== 'string' &&
+    currency !== null &&
+    !('isoCode' in currency)
+  );
 }
 
 export function isLocalesOptions(

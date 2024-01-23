@@ -1,7 +1,6 @@
 import React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Mint, CAD, USD } from '@bloombug/money';
-import currencies from '@bloombug/money/iso-currencies.json';
+import { Mint, CAD, USD, currencies } from '@bloombug/money';
 
 import { isCurrencyOptions, isLocalesOptions, useMoney } from './useMoney';
 import { MintProvider } from '../context';

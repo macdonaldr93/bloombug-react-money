@@ -1,7 +1,6 @@
 import React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Exchange, Mint, CAD } from '@bloombug/money';
-import currencies from '@bloombug/money/iso-currencies.json';
+import { Mint, CAD, currencies, InMemoryExchangeStore } from '@bloombug/money';
 
 import { useExchange } from './useExchange';
 import { MintProvider } from '../context';
@@ -18,8 +17,12 @@ describe('useExchange()', () => {
   });
 
   it('returns expected money ', () => {
-    const exchange = new Exchange();
-    const mint = new Mint({ currencies, defaultCurrency: CAD, exchange });
+    const store = new InMemoryExchangeStore();
+    const mint = new Mint({
+      currencies,
+      defaultCurrency: CAD,
+      exchange: { store },
+    });
     let rendered: any;
 
     const TestComponent = () => {
@@ -36,6 +39,6 @@ describe('useExchange()', () => {
       div
     );
 
-    expect(rendered!).toEqual(exchange);
+    expect(rendered.store!).toEqual(store);
   });
 });

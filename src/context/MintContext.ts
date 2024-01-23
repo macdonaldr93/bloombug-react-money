@@ -5,4 +5,4 @@ export interface IMintContext {
   mint: Mint;
 }
 
-export const MintContext = createContext<IMintContext>({ mint: Mint.init() });
+export const MintContext = createContext<IMintContext>({ mint: new Mint() });
