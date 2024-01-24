@@ -12,14 +12,14 @@ import { useMoney } from '../../hooks';
 export interface MoneyTextProps extends Omit<CurrencyFormatOptions, 'style'> {
   className?: string;
   currency?: Currency | string | null;
-  fractional?: Money | Amount;
+  amount?: Money | Amount;
   locales?: string | string[];
   style?: CSSProperties;
 }
 
 export const MoneyText: FC<MoneyTextProps> = ({
   locales,
-  fractional,
+  amount,
   currency,
   className,
   style,
@@ -28,22 +28,22 @@ export const MoneyText: FC<MoneyTextProps> = ({
   const { Money } = useMoney();
 
   const formattedMoney = useMemo(() => {
-    if (isMoney(fractional)) {
+    if (isMoney(amount)) {
       if (locales) {
-        return fractional.format(locales, formatOptions);
+        return amount.format(locales, formatOptions);
       }
 
-      return fractional.format(formatOptions);
+      return amount.format(formatOptions);
     } else {
-      const fractionalMoney = Money(fractional, currency);
+      const amountMoney = Money(amount, currency);
 
       if (locales) {
-        return fractionalMoney.format(locales, formatOptions);
+        return amountMoney.format(locales, formatOptions);
       }
 
-      return fractionalMoney.format(formatOptions);
+      return amountMoney.format(formatOptions);
     }
-  }, [Money, fractional, currency, locales, formatOptions]);
+  }, [Money, amount, currency, locales, formatOptions]);
 
   return (
     <span className={className} style={style}>

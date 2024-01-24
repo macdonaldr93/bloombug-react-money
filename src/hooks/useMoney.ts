@@ -4,15 +4,15 @@ import { CurrencyFormatOptions, Amount, Currency } from '@bloombug/money';
 import { useMint } from './useMint';
 
 export type FormatMoney = {
-  (fractional?: Amount | undefined): string;
-  (fractional?: Amount | undefined, options?: CurrencyFormatOptions): string;
+  (amount?: Amount | undefined): string;
+  (amount?: Amount | undefined, options?: CurrencyFormatOptions): string;
   (
-    fractional?: Amount | undefined,
+    amount?: Amount | undefined,
     currency?: Currency | string | null | undefined,
     options?: CurrencyFormatOptions
   ): string;
   (
-    fractional?: Amount | undefined,
+    amount?: Amount | undefined,
     currency?: Currency | string | null | undefined,
     locales?: string | string[],
     options?: CurrencyFormatOptions
@@ -25,7 +25,7 @@ export const useMoney = () => {
 
   const formatMoney: FormatMoney = useCallback(
     (
-      fractional?: Amount | undefined,
+      amount?: Amount | undefined,
       currency:
         | string
         | Currency
@@ -36,18 +36,18 @@ export const useMoney = () => {
       options: CurrencyFormatOptions = {}
     ) => {
       if (typeof currency === 'undefined') {
-        return Money(fractional).format();
+        return Money(amount).format();
       }
 
       if (isCurrencyOptions(currency)) {
-        return Money(fractional).format(mint.defaultLocale, currency);
+        return Money(amount).format(mint.defaultLocale, currency);
       }
 
       if (isLocalesOptions(locales)) {
-        return Money(fractional, currency).format(mint.defaultLocale, locales);
+        return Money(amount, currency).format(mint.defaultLocale, locales);
       }
 
-      return Money(fractional, currency).format(locales, options);
+      return Money(amount, currency).format(locales, options);
     },
     [Money]
   );

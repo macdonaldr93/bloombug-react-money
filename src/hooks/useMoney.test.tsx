@@ -38,7 +38,7 @@ describe('useMoney()', () => {
   });
 
   describe('formatMoney()', () => {
-    it('returns expected format with fractional', () => {
+    it('returns expected format with amount', () => {
       const mint = new Mint({ currencies, defaultCurrency: CAD });
       let rendered: any;
 
@@ -59,7 +59,7 @@ describe('useMoney()', () => {
       expect(rendered).toEqual('CA$1.00');
     });
 
-    it('returns expected format with fractional and options', () => {
+    it('returns expected format with amount and options', () => {
       const mint = new Mint({ currencies, defaultCurrency: CAD });
       let rendered: any;
 
@@ -80,7 +80,7 @@ describe('useMoney()', () => {
       expect(rendered).toEqual('CA$1.00E0');
     });
 
-    it('returns expected format with fractional and currency', () => {
+    it('returns expected format with amount and currency', () => {
       const mint = new Mint({ currencies, defaultCurrency: CAD });
       let rendered: any;
 
@@ -101,7 +101,7 @@ describe('useMoney()', () => {
       expect(rendered).toEqual('$1.00');
     });
 
-    it('returns expected format with fractional, currency and options', () => {
+    it('returns expected format with amount, currency and options', () => {
       const mint = new Mint({ currencies, defaultCurrency: CAD });
       let rendered: any;
 
@@ -122,7 +122,7 @@ describe('useMoney()', () => {
       expect(rendered).toEqual('$1.00E0');
     });
 
-    it('returns expected format with fractional, currency and locales', () => {
+    it('returns expected format with amount, currency and locales', () => {
       const mint = new Mint({ currencies, defaultCurrency: CAD });
       let rendered: any;
 
@@ -143,7 +143,7 @@ describe('useMoney()', () => {
       expect(rendered).toEqual('US$1.00');
     });
 
-    it('returns expected format with fractional, currency, locales and options', () => {
+    it('returns expected format with amount, currency, locales and options', () => {
       const mint = new Mint({ currencies, defaultCurrency: CAD });
       let rendered: any;
 

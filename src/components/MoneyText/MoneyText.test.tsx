@@ -17,7 +17,7 @@ describe('<MoneyText />', () => {
   });
 
   it('returns default format money', () => {
-    ReactDOM.render(<MoneyText fractional={100} />, div);
+    ReactDOM.render(<MoneyText amount={100} />, div);
 
     expect(div).toMatchSnapshot();
   });
@@ -27,7 +27,7 @@ describe('<MoneyText />', () => {
 
     ReactDOM.render(
       <MintProvider mint={mint}>
-        <MoneyText fractional={100} currency={CAD} locales="fr-FR" />
+        <MoneyText amount={100} currency={CAD} locales="fr-FR" />
       </MintProvider>,
       div
     );
@@ -40,7 +40,7 @@ describe('<MoneyText />', () => {
 
     ReactDOM.render(
       <MintProvider mint={mint}>
-        <MoneyText fractional={100} currency={CAD} />
+        <MoneyText amount={100} currency={CAD} />
       </MintProvider>,
       div
     );
@@ -53,7 +53,7 @@ describe('<MoneyText />', () => {
 
     ReactDOM.render(
       <MintProvider mint={mint}>
-        <MoneyText fractional={mint.Money(100, CAD)} />
+        <MoneyText amount={mint.Money(100, CAD)} />
       </MintProvider>,
       div
     );

@@ -66,9 +66,9 @@ import { MoneyText } from '@bloombug/react-money';
 const Component = () => {
   return (
     <p>
-      <MoneyText fractional={100} currency="USD" />
+      <MoneyText amount={100} currency="USD" />
       <MoneyText
-        fractional={100}
+        amount={100}
         currency="CAD"
         currencyDisplay="narrowSymbol"
         locale="en-CA"
